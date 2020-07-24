@@ -1,5 +1,5 @@
 {
-  "name": "typescript-sqli",
+  "name": "ts-goat",
   "scripts": {
     "start": "node ./build/server.js",
     "tsc": "tsc"
