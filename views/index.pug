@@ -1,0 +1,35 @@
+html
+  head
+    title= title
+  body
+    form(action='/', method='post', encType='application/x-www-form-urlencoded')
+      input#search(name='search')
+      button(type='submit') Search users
+    if users.length
+      h3 Users:
+      table
+        thead
+          tr
+            th First Name
+            th Last Name
+            th Company
+            th Title
+            th Email
+            th Phone
+            th Date of Birth
+            th SSN
+            th Salary
+            th Admin
+        tbody
+          each usr in users
+            tr
+              td= usr.first_name
+              td= usr.last_name
+              td= usr.company
+              td= usr.title
+              td= usr.email
+              td= usr.phone
+              td [redacted]
+              td [redacted]
+              td [redacted]
+              td= usr.admin

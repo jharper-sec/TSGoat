@@ -1,0 +1,20 @@
+{
+  "name": "typescript-sqli",
+  "scripts": {
+    "start": "node ./build/server.js",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@types/node": "^14.0.25",
+    "@types/typescript": "^2.0.0",
+    "express": "^4.17.1",
+    "pug": "^2.0.4",
+    "sqlite3": "^4.1.1",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/express": "^4.17.7",
+    "@types/sqlite3": "^3.1.6"
+  }
+}
