@@ -1,10 +1,12 @@
 {
   "name": "ts-goat",
   "scripts": {
+    "contrast": "node-contrast ./build/server.js",
     "start": "node ./build/server.js",
     "tsc": "tsc"
   },
   "dependencies": {
+    "@contrast/agent": "^2.16.8",
     "@types/node": "^14.0.25",
     "@types/typescript": "^2.0.0",
     "express": "^4.17.1",
