@@ -1,4 +1,11 @@
+# Node artifacts
 node_modules
 build
+
+# Logs
 *.log
+
+# Contrast Security files
 contrast_security.yaml
+contrast_security.yml
+node-contrast-*.tgz
