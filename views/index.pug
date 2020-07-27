@@ -5,6 +5,8 @@ html
     form(action='/', method='post', encType='application/x-www-form-urlencoded')
       input#search(name='search')
       button(type='submit') Search users
+    if query != null && query.length
+      h3 !{query}
     if users.length
       h3 Users:
       table

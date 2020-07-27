@@ -2,6 +2,9 @@
 node_modules
 build
 
+# OS artifacts
+.DS_Store
+
 # Logs
 *.log
 

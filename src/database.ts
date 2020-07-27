@@ -10,7 +10,7 @@ export { searchUsers as searchUsers}
 function searchUsers(query: string) {
     return new Promise((resolve, reject) => {
       // SQL Injection Vulnerability
-      db.all("SELECT * FROM users WHERE first_name LIKE '%"+query+"%' AND admin == 'false'", (err, rows) => {
+      db.all("SELECT * FROM users WHERE first_name LIKE '%" + query + "%' AND admin == 'false'", (err, rows) => {
         if (err) reject(err)
         else resolve(rows)
       })
