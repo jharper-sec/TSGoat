@@ -33,5 +33,6 @@ npm run contrast
 Navigate to http://localhost:3000 to view the application
 
 # Currently implemented vulnerabilities
-* SQL Injection
 * Reflected XSS
+* Stored XSS
+* SQL Injection
