@@ -13,6 +13,7 @@ app.get('/', (_req, res) => {
   res.render('index', {
     title: 'Users',
     users: [],
+    query: null,
   })
 })
 
@@ -21,11 +22,13 @@ app.post('/', (req, res) => {
     res.render('index', {
       title: 'Users',
       users: data,
+      query: req.body.search
     })
   }).catch(_e => {
     res.render('index', {
       title: 'Users',
       users: [],
+      query: req.body.search
     })
   })
 })
