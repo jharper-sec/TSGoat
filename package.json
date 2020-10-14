@@ -1,13 +1,18 @@
 {
   "name": "ts-goat",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jharper-sec/TSGoat.git"
+  },
   "scripts": {
-    "contrast": "node-contrast ./build/server.js",
+    "contrast": "node -r @contrast/agent ./build/server.js",
     "start": "node ./build/server.js",
     "tsc": "tsc"
   },
   "dependencies": {
-    "@contrast/agent": "^2.16.8",
-    "@types/node": "^14.0.25",
+    "@contrast/agent": "^3.1.1",
+    "@types/node": "^14.11.8",
     "@types/typescript": "^2.0.0",
     "express": "^4.17.1",
     "pug": "^2.0.4",
@@ -16,7 +21,7 @@
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
-    "@types/express": "^4.17.7",
+    "@types/express": "^4.17.8",
     "@types/sqlite3": "^3.1.6"
   }
 }
