@@ -3,7 +3,11 @@ import bodyParser = require('body-parser')
 import { searchUsers } from "./database"
 
 const app = express()
-const port = 3000
+let port: string = "3000"
+if (process.env.APP_PORT)
+{
+  port = process.env.APP_PORT
+}
 
 app.set('view engine', 'pug')
 app.use(bodyParser.urlencoded({ extended: false }))

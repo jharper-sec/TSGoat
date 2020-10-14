@@ -1,0 +1,12 @@
+# Node artifacts
+node_modules
+build
+
+# OS artifacts
+.DS_Store
+
+# Logs
+*.log
+
+# Contrast Security files
+node-contrast-*.tgz
