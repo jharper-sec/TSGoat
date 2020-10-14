@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+
+  ts-goat:
+    build:
+      context: .
+      dockerfile: Dockerfile-TSGoat
+
+
