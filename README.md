@@ -32,6 +32,17 @@ npm run contrast
 
 Navigate to http://localhost:3000 to view the application
 
+# Run with Docker
+Build container image
+```
+docker-compose build
+```
+
+Run with docker-compose
+```
+docker-compose up
+```
+
 # Currently implemented vulnerabilities
 * SQL Injection
 * Reflected XSS
