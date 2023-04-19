@@ -1,0 +1,59 @@
+# DISCLAIMER: This workflow file has been auto-generated and committed to the repo by the GitHub App from Contrast Security.
+# Manual edits to this file could cause the integration to produce unexpected behavior or break.
+# VERSION 0.0.1
+name: Contrast Security App Workflow
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - master
+jobs:
+  fingerprint_repo:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+      - name: Run Contrast SCA Fingerprint
+        id: fingerprint
+        uses: 'Contrast-Security-Inc/contrast-sca-action@main'
+        with:
+          # This is a temporary input variable to be used for testing the dev version of the CLI
+          # being pulled from artifactory. We will manually set this secret per repo for testing.
+          artApiKey: ${{ secrets.TEMP_ART_API_KEY }}
+          apiKey: ${{ secrets.CONTRAST_GITHUB_APP_API_KEY }}
+          orgId: ${{ vars.CONTRAST_GITHUB_APP_ORG_ID }}
+          authHeader: ${{ secrets.CONTRAST_GITHUB_APP_AUTH_HEADER }}
+          apiUrl: ${{ vars.CONTRAST_GITHUB_APP_TS_URL }}
+          repoUrl: ${{ github.server_url }}/${{ github.repository }}
+          repoName: ${{ github.repository }}
+          externalId: ${{ vars.CONTRAST_GITHUB_APP_ID }}
+          command: fingerprint
+    outputs:
+      fingerprint: ${{ steps.fingerprint.outputs.fingerprint }}
+  analyze_dependencies:
+    needs: fingerprint_repo
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        manifest:
+          - ${{ fromJson(needs.fingerprint_repo.outputs.fingerprint) }}
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+      - name: Run Contrast SCA Audit
+        uses: 'Contrast-Security-Inc/contrast-sca-action@main'
+        with:
+          # This is a temporary input variable to be used for testing the dev version of the CLI
+          # being pulled from artifactory. We will manually set this secret per repo for testing.
+          artApiKey: ${{ secrets.TEMP_ART_API_KEY }}
+          apiKey: ${{ secrets.CONTRAST_GITHUB_APP_API_KEY }}
+          orgId: ${{ vars.CONTRAST_GITHUB_APP_ORG_ID }}
+          authHeader: ${{ secrets.CONTRAST_GITHUB_APP_AUTH_HEADER }}
+          apiUrl: ${{ vars.CONTRAST_GITHUB_APP_TS_URL }}
+          filePath: ${{ matrix.manifest.filePath }}
+          repositoryId: ${{ matrix.manifest.repositoryId }}
+          projectGroupId: ${{ matrix.manifest.projectGroupId }}
